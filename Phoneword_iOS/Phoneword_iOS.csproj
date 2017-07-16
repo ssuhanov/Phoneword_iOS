@@ -109,11 +109,13 @@
     <Folder Include="Helpers\" />
     <Folder Include="CallHistoryController\" />
     <Folder Include="MainViewController\" />
+    <Folder Include="StartViewController\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="CallHistoryController\CallHistoryController.storyboard" />
     <InterfaceDefinition Include="MainViewController\MainViewController.storyboard" />
+    <InterfaceDefinition Include="StartViewController\StartViewController.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -131,6 +133,10 @@
     <Compile Include="MainViewController\MainViewController.cs" />
     <Compile Include="MainViewController\MainViewController.designer.cs">
       <DependentUpon>MainViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartViewController\StartViewController.cs" />
+    <Compile Include="StartViewController\StartViewController.designer.cs">
+      <DependentUpon>StartViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

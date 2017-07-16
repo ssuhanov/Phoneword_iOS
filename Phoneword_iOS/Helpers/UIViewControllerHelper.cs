@@ -9,5 +9,11 @@ namespace Phoneword_iOS
             UIStoryboard storyboard = UIStoryboard.FromName(typeof(T).Name, null);
             return storyboard.InstantiateInitialViewController() as T;
         }
+
+        public static UINavigationController NavigationStoryboardInstance<T>() where T : UIViewController
+        {
+            UIStoryboard storyboard = UIStoryboard.FromName(typeof(T).Name, null);
+            return storyboard.InstantiateInitialViewController() as UINavigationController;
+        }
     }
 }
