@@ -107,15 +107,16 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Helpers\" />
-    <Folder Include="CallHistoryController\" />
-    <Folder Include="MainViewController\" />
-    <Folder Include="StartViewController\" />
+    <Folder Include="Modules\" />
+    <Folder Include="Modules\CallHistory\" />
+    <Folder Include="Modules\Start\" />
+    <Folder Include="Modules\Main\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
-    <InterfaceDefinition Include="CallHistoryController\CallHistoryController.storyboard" />
-    <InterfaceDefinition Include="MainViewController\MainViewController.storyboard" />
-    <InterfaceDefinition Include="StartViewController\StartViewController.storyboard" />
+    <InterfaceDefinition Include="Modules\CallHistory\CallHistoryController.storyboard" />
+    <InterfaceDefinition Include="Modules\Start\StartViewController.storyboard" />
+    <InterfaceDefinition Include="Modules\Main\MainViewController.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -124,20 +125,20 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="PhoneTranslator.cs" />
     <Compile Include="Helpers\UIViewControllerHelper.cs" />
-    <Compile Include="CallHistoryController\CallHistoryController.cs" />
-    <Compile Include="CallHistoryController\CallHistoryController.designer.cs">
+    <Compile Include="Modules\CallHistory\CallHistoryController.cs" />
+    <Compile Include="Modules\CallHistory\CallHistoryController.designer.cs">
       <DependentUpon>CallHistoryController.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainViewController\MainViewController.cs" />
-    <Compile Include="MainViewController\MainViewController.designer.cs">
-      <DependentUpon>MainViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StartViewController\StartViewController.cs" />
-    <Compile Include="StartViewController\StartViewController.designer.cs">
+    <Compile Include="Modules\Start\StartViewController.cs" />
+    <Compile Include="Modules\Start\StartViewController.designer.cs">
       <DependentUpon>StartViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Main\MainViewController.cs" />
+    <Compile Include="Modules\Main\MainViewController.designer.cs">
+      <DependentUpon>MainViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\PhoneTranslator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
