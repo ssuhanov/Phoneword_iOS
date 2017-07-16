@@ -2,21 +2,23 @@
 
 using UIKit;
 using Foundation;
+using System.Collections.Generic;
 
 namespace Phoneword_iOS
 {
     public partial class ViewController : UIViewController
     {
+        string translatedNumber = "";
+        public List<string> PhoneNumbers { get; set; }
+
         protected ViewController(IntPtr handle) : base(handle)
         {
-            // Note: this .ctor should not contain any initialization logic.
+            PhoneNumbers = new List<string>();
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
-            string translatedNumber = "";
 
             TranslateButton.TouchUpInside += (object sender, EventArgs e) =>
             {
@@ -41,6 +43,8 @@ namespace Phoneword_iOS
 
             CallButton.TouchUpInside += (object sender, EventArgs e) =>
             {
+                PhoneNumbers.Add(translatedNumber);
+
                 // Use URL handler with tel: prefix to invoke Apple's Phone app...
                 var url = new NSUrl("tel:" + translatedNumber);
 
@@ -52,6 +56,24 @@ namespace Phoneword_iOS
                     PresentViewController(alert, true, null);
                 }
             };
+        }
+
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            base.PrepareForSegue(segue, sender);
+
+			// set the View Controller that’s powering the screen we’re
+			// transitioning to
+
+			var callHistoryContoller = segue.DestinationViewController as CallHistoryController;
+
+			//set the Table View Controller’s list of phone numbers to the
+			// list of dialed phone numbers
+
+			if (callHistoryContoller != null)
+			{
+				callHistoryContoller.PhoneNumbers = PhoneNumbers;
+			}
         }
     }
 }
