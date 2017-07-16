@@ -2,70 +2,71 @@ using System;
 
 using UIKit;
 using Foundation;
-using System.Collections.Generic;
 
 namespace Phoneword_iOS
 {
-	public partial class MainViewController : UIViewController
-	{
-		string translatedNumber = "";
-		public List<string> PhoneNumbers { get; set; }
+    public partial class MainViewController : UIViewController, IMainView
+    {
+        MainPresenter presenter;
 
-		protected MainViewController(IntPtr handle) : base(handle)
+		#region IMainView
+
+		public void HideKeyboard()
 		{
-			PhoneNumbers = new List<string>();
+			PhoneNumberText.ResignFirstResponder();
 		}
 
-		public override void ViewDidLoad()
+		public void UpdateButtonTitle(string title, bool enabled)
 		{
-			base.ViewDidLoad();
+			CallButton.SetTitle(title, UIControlState.Normal);
+			CallButton.Enabled = enabled;
+		}
 
-			TranslateButton.TouchUpInside += (object sender, EventArgs e) =>
+		public void OpenUrl(NSUrl url, string phoneNumber)
+		{
+			if (!UIApplication.SharedApplication.OpenUrl(url))
 			{
-				// Convert the phone number with text to a number
-				// using PhoneTranslator.cs
-				translatedNumber = PhoneNumberText.Text.ToPhoneNumber();
+                ShowError(phoneNumber);
+			}
+		}
 
-				// Dismiss the keyboard if text field was tapped
-				PhoneNumberText.ResignFirstResponder();
+		public void PushViewController(UIViewController viewController)
+		{
+			NavigationController.PushViewController(viewController, true);
+		}
 
-				if (translatedNumber == "")
-				{
-					CallButton.SetTitle("Call", UIControlState.Normal);
-					CallButton.Enabled = false;
-				}
-				else
-				{
-					CallButton.SetTitle("Call " + translatedNumber, UIControlState.Normal);
-					CallButton.Enabled = true;
-				}
-			};
+		#endregion
 
-			CallButton.TouchUpInside += (object sender, EventArgs e) =>
-			{
-				PhoneNumbers.Add(translatedNumber);
+		public MainViewController(IntPtr handle) : base(handle)
+        {
+			presenter = new MainPresenter();
+		}
 
-				// Use URL handler with tel: prefix to invoke Apple's Phone app...
-				var url = new NSUrl("tel:" + translatedNumber);
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
 
-				// ...otherwise show an alert dialog
-				if (!UIApplication.SharedApplication.OpenUrl(url))
-				{
-					var alert = UIAlertController.Create("Not supported", "Can't call the number: " + translatedNumber, UIAlertControllerStyle.Alert);
-					alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-					PresentViewController(alert, true, null);
-				}
-			};
+            TranslateButton.TouchUpInside += (object sender, EventArgs e) =>
+            {
+                presenter.TranslateToPhoneNumber(this, PhoneNumberText.Text);
+            };
 
-			CallHistoryButton.TouchUpInside += (object sender, EventArgs e) =>
-			{
-				CallHistoryController callHistory = UIViewControllerHelper.StoryboardInstance<CallHistoryController>();
-				if (callHistory != null)
-				{
-					callHistory.PhoneNumbers = PhoneNumbers;
-					NavigationController.PushViewController(callHistory, true);
-				}
-			};
+            CallButton.TouchUpInside += (object sender, EventArgs e) =>
+            {
+                presenter.CallToPhoneNumber(this);
+            };
+
+            CallHistoryButton.TouchUpInside += (object sender, EventArgs e) =>
+            {
+                presenter.ShowCallHistory(this);
+            };
+        }
+
+		void ShowError(string phoneNumber)
+		{
+			var alert = UIAlertController.Create("Not supported", "Can't call the number: " + phoneNumber, UIAlertControllerStyle.Alert);
+			alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+			PresentViewController(alert, true, null);
 		}
 	}
 }

@@ -139,6 +139,8 @@
       <DependentUpon>MainViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\PhoneTranslator.cs" />
+    <Compile Include="Modules\Main\IMainView.cs" />
+    <Compile Include="Modules\Main\MainPresenter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
