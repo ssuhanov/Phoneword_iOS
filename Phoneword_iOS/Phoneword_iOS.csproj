@@ -107,10 +107,12 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Helpers\" />
+    <Folder Include="CallHistoryController\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="CallHistoryController\CallHistoryController.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -124,11 +126,11 @@
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="PhoneTranslator.cs" />
-    <Compile Include="CallHistoryController.cs" />
-    <Compile Include="CallHistoryController.designer.cs">
+    <Compile Include="Helpers\UIViewControllerHelper.cs" />
+    <Compile Include="CallHistoryController\CallHistoryController.cs" />
+    <Compile Include="CallHistoryController\CallHistoryController.designer.cs">
       <DependentUpon>CallHistoryController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\UIViewControllerHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -59,8 +59,7 @@ namespace Phoneword_iOS
 
             CallHistoryButton.TouchUpInside += (object sender, EventArgs e) =>
             {
-                // Launches a new instance of CallHistoryController
-                CallHistoryController callHistory = Storyboard.InstantiateViewController("CallHistoryController") as CallHistoryController;
+                CallHistoryController callHistory = UIViewControllerHelper.StoryboardInstance<CallHistoryController>();
                 if (callHistory != null)
                 {
                     callHistory.PhoneNumbers = PhoneNumbers;

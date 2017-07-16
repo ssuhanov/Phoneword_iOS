@@ -14,5 +14,8 @@ namespace Phoneword_iOS
     [Register ("CallHistoryController")]
     partial class CallHistoryController
     {
+        void ReleaseDesignerOutlets ()
+        {
+        }
     }
 }
