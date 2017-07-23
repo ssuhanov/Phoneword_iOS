@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phoneword_iOS", "Phoneword_iOS\Phoneword_iOS.csproj", "{E5A8ABAB-B49F-4C6B-9200-FC7B1EF47D9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phoneword_iOS_Tests", "Phoneword_iOS_Tests\Phoneword_iOS_Tests.csproj", "{51A531E8-B6DB-48F2-9856-9BBBE07A11B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -19,5 +21,13 @@ Global
 		{E5A8ABAB-B49F-4C6B-9200-FC7B1EF47D9D}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{E5A8ABAB-B49F-4C6B-9200-FC7B1EF47D9D}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{E5A8ABAB-B49F-4C6B-9200-FC7B1EF47D9D}.Debug|iPhone.Build.0 = Debug|iPhone
+		{51A531E8-B6DB-48F2-9856-9BBBE07A11B9}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{51A531E8-B6DB-48F2-9856-9BBBE07A11B9}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{51A531E8-B6DB-48F2-9856-9BBBE07A11B9}.Release|iPhone.ActiveCfg = Release|iPhone
+		{51A531E8-B6DB-48F2-9856-9BBBE07A11B9}.Release|iPhone.Build.0 = Release|iPhone
+		{51A531E8-B6DB-48F2-9856-9BBBE07A11B9}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{51A531E8-B6DB-48F2-9856-9BBBE07A11B9}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{51A531E8-B6DB-48F2-9856-9BBBE07A11B9}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{51A531E8-B6DB-48F2-9856-9BBBE07A11B9}.Debug|iPhone.Build.0 = Debug|iPhone
 	EndGlobalSection
 EndGlobal
